@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta charset="utf-8" /><title>Pro Git - professional version control</title></head><body><h1>번역</h1>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Pro Git - professional version control</title></head><body><h1>번역</h1>
 
 <p>안녕하세요. 한국어 번역은 박창우(pismute@gmail.com), 이성환(lethee@gmail.com)이 하였습니다. 오역 등의 개선 사항은 역자의 메일로 보내주시거나 한국어 번역 게시판에 <code>https://github.com/dogfeet/progit/issues</code>에 남겨주시기 바랍니다. 직접 개선해서 패치나 Pull Request를 보내주셔도 됩니다.</p>
 
@@ -29,13 +29,13 @@
 
 <p><img src="figures/18333fig0102-tn.png" title="1-2. 중앙집중식 버전 관리 (CVCS) 다이어그램." alt="1-2. 중앙집중식 버전 관리 (CVCS) 다이어그램." /></p>
 
-<p>CVCS 환경은 로컬 VCS에 비해 장점이 많다. 프로젝트에 참여한 사람이면 누가 무엇을 하고 있는지 알 수 있다. 관리자는 누가 무엇을 할 수 있는지 꼼꼼하게 관리할 수 있다. 모든 클라이언트의 로컬 데이터페이스를 관리하는 것보다 CVS 하나를 관리하기가 훨씬 쉽다.</p>
+<p>CVCS 환경은 로컬 VCS에 비해 장점이 많다. 프로젝트에 참여한 사람이면 누가 무엇을 하고 있는지 알 수 있다. 관리자는 누가 무엇을 할 수 있는지 꼼꼼하게 관리할 수 있다. 모든 클라이언트의 로컬 데이터베이스를 관리하는 것보다 VCS 하나를 관리하기가 훨씬 쉽다.</p>
 
 <p>그러나 CVCS 환경은 몇 가지 치명적인 결점이 있다. 가장 대표적인 것이 중앙 서버에 발생한 문제다. 만약 서버가 한 시간 동안 다운되면 그동안 아무도 다른 사람과 협업할 수 없고 사람들이 하는 일을 백업할 방법도 없다. 그리고 중앙 데이터베이스가 있는 하드디스크에 문제가 생기면 프로젝트의 모든 히스토리를 잃는다. 물론 사람마다 하나씩 가진 Snapshot은 괜찮다. 로컬 VCS 시스템도 이와 비슷한 결점이 있고 이런 문제가 발생하면 모든 것을 잃는다.</p>
 
 <h3>분산형 버전 관리 시스템(Distributed VCS)</h3>
 
-<p>분산형 버전 관리 시스템(DVCS)을 설명할 차례다. Git, Mecurial, Bazaar, Dearcs 같은 DVCS에서는 클라이언트가 파일의 마지막 Snapshot을 Checkout 하지 않는다. 그냥 저장소를 전부 복제한다. 서버에 문제가 생기면 이 복제물로 다시 작업을 시작할 수 있다. 클라이언트 중에서 아무거나 골라도 서버를 복원할 수 있다. 모든 Checkout은 모든 데이터를 가진 진정한 백업이다.</p>
+<p>분산형 버전 관리 시스템(DVCS)을 설명할 차례다. Git, Mecurial, Bazaar, Darcs 같은 DVCS에서는 클라이언트가 파일의 마지막 Snapshot을 Checkout 하지 않는다. 그냥 저장소를 전부 복제한다. 서버에 문제가 생기면 이 복제물로 다시 작업을 시작할 수 있다. 클라이언트 중에서 아무거나 골라도 서버를 복원할 수 있다. 모든 Checkout은 모든 데이터를 가진 진정한 백업이다.</p>
 
 <p><img src="figures/18333fig0103-tn.png" title="1-3. 분산형 버전 관리 시스템(DVCS) 다이어그램." alt="1-3. 분산형 버전 관리 시스템(DVCS) 다이어그램." /></p>
 
@@ -685,7 +685,7 @@ $ git status
 <pre><code>$ git rm log/\*.log
 </code></pre>
 
-<p><code>*</code>앞에 <code>\</code>을 사용한 것을 기억하자. 쉘의 확장자도 그렇지만 Git의 파일 확장자에서도 <code>\</code>는 필요하다. 이 명령은 <code>log/</code> 디렉토리에 있는 <code>.log</code> 파일을 모두 삭제한다. 다음의 예제처럼 할 수도 있다:</p>
+<p><code>*</code>앞에 <code>\</code>을 사용한 것을 기억하자. 이것은 쉘의 파일명 확장에 더하여 Git 자체의 파일명 확장 기능을 사용하기 위해서이다. 이 명령은 <code>log/</code> 디렉토리에 있는 <code>.log</code> 파일을 모두 삭제한다. 다음의 예제처럼 할 수도 있다:</p>
 
 <pre><code>$ git rm \*~
 </code></pre>
@@ -1729,9 +1729,7 @@ CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
 </code></pre>
 
-<p>Git은 Merge하지 못했다. 충돌을 개발자가 해결하지 않는 한 Merge할 수 없다. 일단 충돌이 일어나면 <code>git status</code> 명령으로 어떤 파일에 충돌이 일어났는지 확인한다:</p>
-
-<p>Git은 성공적으로 Merge된 새 커밋을 만들어낼 수 없다. 변경사항의 충돌을 개발자가 해결하지 않는 한 Merge 과정을 진행할 수 없다. Merge 충돌이 일어났을 때 Git이 어떤 파일을 Merge 할 수 없었는지 살펴보려면 <code>git status</code> 명령을 이용한다:</p>
+<p>Git은 자동으로 Merge된 새 커밋을 만들어내지 못했다. 변경사항의 충돌을 개발자가 해결하지 않는 한 Merge 과정을 진행할 수 없다. Merge 충돌이 일어났을 때 Git이 어떤 파일을 Merge 할 수 없었는지 살펴보려면 어느 시점에서든 <code>git status</code> 명령을 이용한다:</p>
 
 <pre><code>[master*]$ git status
 index.html: needs merge
@@ -2085,7 +2083,7 @@ $ git branch -d server
 
 <p><img src="figures/18333fig0336-tn.png" title="3-36. 저장소를 Clone하고 일부 수정함." alt="3-36. 저장소를 Clone하고 일부 수정함." /></p>
 
-<p>이제 팀원 중 누군가 커밋, Merge하고 나서 서버에 Push 한다. 이 리모트 브랜치를 Fetch, Merge하면 그림 3-47과 같이 된다.</p>
+<p>이제 팀원 중 누군가 커밋, Merge하고 나서 서버에 Push 한다. 이 리모트 브랜치를 Fetch, Merge하면 그림 3-37과 같이 된다.</p>
 
 <p><img src="figures/18333fig0337-tn.png" title="3-37. Fetch한 후 Merge함." alt="3-37. Fetch한 후 Merge함." /></p>
 
@@ -2173,11 +2171,11 @@ $ git branch -d server
 
 <h4>장점</h4>
 
-<p>SSH는 장점이 매우 많은 프로토콜이다. 첫째, 누가 리모트에서 저장소에 접근하는지 알고 싶다면 SSH를 사용해야 한다. 둘째 SSH는 상대적으로 설정하기 쉽다. SSH 데몬은 정말 흔하다. 많은 네트워크 관리자들은 SSH 데몬을 다루어본 경험이 있고 대부분의 OS 배포판에는 SSH 데몬과 관리도구들이 모두 들어 있다. 셋째 SSH를 통해 접근하면 보안에 안전하다. 모든 데이터는 암호화되어 인증된 상태로 전송된다. 마지막으로 SSH는 전송 시 데이터를 가능한 압축하기 때문에 효율적이다.</p>
+<p>SSH는 장점이 매우 많은 프로토콜이다. 첫째, 누가 리모트에서 저장소에 접근하는지 알고 싶다면 SSH를 사용해야 한다. 둘째, SSH는 상대적으로 설정하기 쉽다. SSH 데몬은 정말 흔하다. 많은 네트워크 관리자들은 SSH 데몬을 다루어본 경험이 있고 대부분의 OS 배포판에는 SSH 데몬과 관리도구들이 모두 들어 있다. 셋째, SSH를 통해 접근하면 보안에 안전하다. 모든 데이터는 암호화되어 인증된 상태로 전송된다. 마지막으로 SSH는 전송 시 데이터를 가능한 압축하기 때문에 효율적이다.</p>
 
 <h4>단점</h4>
 
-<p>SSH의 단점은 익명으로 접근할 수 없다는 것이다. 심지어 읽기 전용인 경우에도 익명으로 시스템에 접근할 수 없다. 회사에서만 사용할 것이라면 SSH가 가장 적합한 프로토콜일 것이지만 오픈소스 프로젝트는 SSH만으로는 부족하다. 만약 사람들이 프로젝트에 익명으로 접근할 수 있게 하려면 혼자만 Push할 수 있고 다른 사람들은 Pull만 할 수 있도록 SSH를 설정해야 한다.</p>
+<p>SSH의 단점은 익명으로 접근할 수 없다는 것이다. 심지어 읽기 전용인 경우에도 익명으로 시스템에 접근할 수 없다. 회사에서만 사용할 것이라면 SSH가 가장 적합한 프로토콜일 것이지만 오픈소스 프로젝트는 SSH만으로는 부족하다. 만약 사람들이 프로젝트에 익명으로 접근할 수 있게 하려면, 자신이 Push할 때 사용할 SSH를 설치하는 것과 별개로 다른 사람들이 Pull할 때 사용할 다른 프로토콜을 추가해야 한다.</p>
 
 <h3>Git 프로토콜</h3>
 
@@ -2185,7 +2183,7 @@ $ git branch -d server
 
 <h4>장점</h4>
 
-<p>Git 프로토콜은 전송속도가 가장 빠르다. 교통이 많은 공개 프로젝트나 별도의 인증이 필요 없고 읽기만 허용하는 프로젝트를 서비스할 때 유용하다. 암호화와 인증을 빼면 SSH 프로토콜과 전송 메커니즘이 별반 다르지 않다.</p>
+<p>Git 프로토콜은 전송속도가 가장 빠르다. 전송량이 많은 공개 프로젝트나 별도의 인증이 필요 없고 읽기만 허용하는 프로젝트를 서비스할 때 유용하다. 암호화와 인증을 빼면 SSH 프로토콜과 전송 메커니즘이 별반 다르지 않다.</p>
 
 <h4>단점</h4>
 
@@ -2658,9 +2656,9 @@ members   = @mobile_committers john
 
 <h2>Gitolite</h2>
 
-<p>주의사항: 이 절의 최신판은 항상 <a href="http://github.com/sitaramc/gitolite/blob/pu/doc/progit-article.mkd">gitolite documentation</a>에서 확인할 수 있다. 저자는 다른 참고 문서 없이 이 절만 읽고서도 gtolite를 설치할 수 있도록 문서를 작성했다고 말했다. 이 절은 꼭 필요하지만 완벽하지 않고 gitolite에 대한 방대한 문서를 대체할 수도 없다.</p>
+<p>주의사항: 이 절의 최신판은 항상 <a href="http://github.com/sitaramc/gitolite/blob/pu/doc/progit-article.mkd">gitolite documentation</a>에서 확인할 수 있다. 저자는 다른 참고 문서 없이 이 절만 읽고서도 Gitolite를 설치할 수 있도록 문서를 작성했다고 말했다. 이 절은 꼭 필요하지만 완벽하지 않고 Gitolite에 대한 방대한 문서를 대체할 수도 없다.</p>
 
-<p>Git은 좀 더 꼼꼼한 접근 제어가 필요한 기업환경에서도 많이 쓰인다. 원래 이 요구 사항 덕분에 Gitolite가 만들어졌다. 그리고 오픈 소스 진영에서도 매우 유용하다는 것이 밝혀졌다. Fedora 프로젝트는 gitolite를 사용하여 10,000개가 넘는 패키지 관리용 저장소의 권한을 제어한다. Fedora의 gitolite가 아마도 가장 규모가 클 것이다.</p>
+<p>Git은 좀 더 꼼꼼한 접근 제어가 필요한 기업환경에서도 많이 쓰인다. 원래 이 요구 사항 덕분에 Gitolite가 만들어졌다. 그리고 오픈 소스 진영에서도 매우 유용하다는 것이 밝혀졌다. Fedora 프로젝트는 Gitolite를 사용하여 10,000개가 넘는 패키지 관리용 저장소의 권한을 제어한다. Fedora의 Gitolite가 아마도 가장 규모가 클 것이다.</p>
 
 <p>Gitolite는 저장소뿐만 아니라 저장소의 브랜치나 태그에도 권한을 명시할 수 있다. 즉, 어떤 사람들은 refs(브랜치나 태그)에 Push할 수 있고 어떤 사람은 할 수 없게 하는 것이 가능하다.</p>
 
@@ -2668,9 +2666,9 @@ members   = @mobile_committers john
 
 <p>별도 문서를 읽지 않아도 유닉스 계정만 하나 있으면 Gitolite를 쉽게 설치할 수 있다. 이 글은 여러 가지 리눅스들과 솔라리스 10에서 테스트를 마쳤다. git, perl, openssh가 호환되는 ssh 서버가 설치돼 있으면 root 권한도 필요 없다. 앞서 사용했던 <code>gitserver</code>라는 서버와 그 서버에 <code>gitolite</code> 계정을 만들어 사용할 것이다.</p>
 
-<p>Gitolite는 보통의 서버 소프트웨어와는 약간 다르다. ssh를 통해서 접근하지만, 서버의 모든 계정은 근본적으로 "gitolite 호스트"가 될 수 있다. 그래서 설치하는 일은 소프트웨어 자체를 설치하는 일과 한 계정을 "gitolite 호스트"로 설정하는 작업으로 나눌 수 있다.</p>
+<p>Gitolite는 보통의 서버 소프트웨어와는 약간 다르다. ssh를 통해서 접근하지만, 서버의 모든 계정은 근본적으로 "Gitolite 호스트"가 될 수 있다. 그래서 설치하는 일은 소프트웨어 자체를 설치하는 일과 한 계정을 "Gitolite 호스트"로 설정하는 작업으로 나눌 수 있다.</p>
 
-<p>Gitolite를 설치하는 방법은 모두 네 가지이다. Fedora나 Debian을 사용하고 있으면 RPM이나 DEB 패키지를 구해서 설치하거나 수동으로 설치할 수 있다. 이 방법들은 root 권한이 필요하다. 이 두 가지 모두 시스템의 모든 사용자를 각각 "gitolite host"로 만들 수 있다.</p>
+<p>Gitolite를 설치하는 방법은 모두 네 가지이다. Fedora나 Debian을 사용하고 있으면 RPM이나 DEB 패키지를 구해서 설치하거나 수동으로 설치할 수 있다. 이 방법들은 root 권한이 필요하다. 이 두 가지 모두 시스템의 모든 사용자를 각각 "Gitolite 호스트"로 만들 수 있다.</p>
 
 <p>서버의 Root 권한을 얻을 수 없는 사용자는 자신의 계정에 설치할 수 있다. 서버에서 Bash 스크립트를 실행하여 Gitolite를 설치할 수 있다. 심지어 Windows 환경에서 msysgit에 들어 있는 bash에서도 실행된다.</p>
 
@@ -2694,11 +2692,11 @@ $ cd gitolite/src
 $ ./gl-easy-install -q gitolite gitserver sitaram
 </code></pre>
 
-<p>이제 다 됐다. Gitolite를 서버에 설치했고 홈 디렉토리에 <code>gitolite-admin</code>라는 저장소를 만들었다. 이 저장소를 수정하고 Push해서 gitolite 서버를 관리할 수 있다.</p>
+<p>이제 다 됐다. Gitolite를 서버에 설치했고 홈 디렉토리에 <code>gitolite-admin</code>라는 저장소를 만들었다. 이 저장소를 수정하고 Push해서 Gitolite 서버를 관리할 수 있다.</p>
 
 <p>마지막 명령에는 중요한 정보가 많이 들어 있다. 이 명령을 처음 실행하면 키쌍이(keypair) 새로 만들어진다. 암호가 필요하면 입력하고 필요 없으면 그냥 엔터를 친다. 왜 키를 하나 더 만드는지, 그것을 어떻게 사용하는지는 Gitolite의 "ssh troubleshooing" 문서를 참고하라(이 문서가 필요할 때가 있다).</p>
 
-<p>서버에는 기본적으로 <code>gitolite-admin</code>과 <code>testing</code> 저장소가 생성되고 필요하면 이 저장소를 다음과 같이 Clone한다(<em>authorized_keys</em> 파일에 공개키가 등록돼서 SSH 접근이 가능한 계정으로 gotolite 계정에 접근하는 것):</p>
+<p>서버에는 기본적으로 <code>gitolite-admin</code>과 <code>testing</code> 저장소가 생성되고 필요하면 이 저장소를 다음과 같이 Clone한다(<em>authorized_keys</em> 파일에 공개키가 등록돼서 SSH 접근이 가능한 계정으로 Gitolite 계정에 접근하는 것):</p>
 
 <pre><code>$ git clone gitolite:gitolite-admin
 $ git clone gitolite:testing
@@ -2773,13 +2771,13 @@ repo testing
 
 <p>이제는 접근제어 규칙이 실제로 어떻게 적용되는지 궁금할 것이다. 이제부터 그 내용을 살펴보자.</p>
 
-<p>Gitlolite는 두 단계로 접근을 제어한다. 첫 단계가 저장소 단계인데 접근하는 저장소의 ref 중에서 하나라도 읽고 쓸 수 있으면 실제로 그 저장소 전부에 대한 읽기, 쓰기 권한이 있는 것이다.</p>
+<p>Gitolite는 두 단계로 접근을 제어한다. 첫 단계가 저장소 단계인데 접근하는 저장소의 ref 중에서 하나라도 읽고 쓸 수 있으면 실제로 그 저장소 전부에 대한 읽기, 쓰기 권한이 있는 것이다.</p>
 
 <p>두 번째 단계는 브랜치나 태그 단위로 제어하는 것으로 오직 "쓰기" 접근만 제어할 수 있다. 어느 사용자가 특정 ref 이름으로 접근을 시도하면(<code>W</code>나 <code>+</code>같은) 설정 파일에 정의된 순서대로 접근 제어 규칙이 적용된다. 그 순서대로 사용자 이름과 ref 이름을 비교하는데 ref 이름의 경우 단순히 문자열을 비교하는 것이 아니라 정규 표현식을 만족하게 하는 것이다. 만족하는 것을 찾으면 정상적으로 Push되지만 찾지 못하면 거절된다.</p>
 
 <h3>"deny" 규칙을 꼼꼼하게 제어하기</h3>
 
-<p>지금까지는 <code>R</code>, <code>RW</code>, RW+<code>권한에 대해서만 다뤘다. gitolite는 "deny" 규칙을 위해서</code>-<code>권한도 지원한다. 이것으로 복잡도를 낮출 수 있다.</code>-`로 거절도 할 수 있기 때문에 <em>규칙의 순서가 중요하다</em>.</p>
+<p>지금까지는 <code>R</code>, <code>RW</code>, RW+<code>권한에 대해서만 다뤘다. Gitolite는 "deny" 규칙을 위해서</code>-<code>권한도 지원한다. 이것으로 복잡도를 낮출 수 있다.</code>-`로 거절도 할 수 있기 때문에 <em>규칙의 순서가 중요하다</em>.</p>
 
 <p>다시 말해서 engineers가 master와 integ 브랜치 <em>이외의</em> 모든 브랜치를 되돌릴 수 있게 하고 싶으면 다음과 같이 한다:</p>
 
@@ -2894,7 +2892,7 @@ daemon = yes
 
 <p>차례대로 커밋과 Push하고 나면 지금 실행 중인 데몬이 9418 포트로 접근하는 사람에게 서비스하기 시작할 것이다.</p>
 
-<p>Gitosis 없이도 Git 데몬을 설치할 수 있지만 그럴러면 서비스하고자 하는 프로젝트마다 다음과 같이 <code>git-daemon-export-ok</code> 파일을 넣어 주어야 한다:</p>
+<p>Gitosis 없이도 Git 데몬을 설치할 수 있지만 그러려면 서비스하고자 하는 프로젝트마다 다음과 같이 <code>git-daemon-export-ok</code> 파일을 넣어 주어야 한다:</p>
 
 <pre><code>$ cd /path/to/project.git
 $ touch git-daemon-export-ok
@@ -3135,7 +3133,7 @@ lib/simplegit.rb:26: trailing whitespace.
 
 <p>커밋을 하기 전에 공백문자에 대해 검사를 하면 공백으로 불필요하게 커밋되는 것을 막고 이런 커밋으로 인해 불필요하게 다른 개발자들이 신경 쓰는 일을 방지할 수 있다.</p>
 
-<p>그리고 각 커밋은 논리적으로 구분되는 Changeset이다. 최대한 수정사항을 하나의 주제로 요약할 수 있어야 하고 여러 가지 이슈에 대한 수정사항을 전부 하나의 커밋에 담지 않아야 한다. 여러 가지 이슈를 한꺼번에 수정했다고 하더라도 Stage 영역으로 하나의 이슈를 하나의 커밋으로 나누어 커밋을 의미 있게 만들 수 있다. 같은 파일의 다른 부분을 수정하는 경우에는 <code>git add -patch</code> 명령을 써서 한 부분씩 나누어 Stage 영역에 저장해야 한다(관련 내용은 6장에서 다룰 것이다). 결과적으로 최종 프로젝트의 모습은 한 번에 커 믿을 하든 다섯 번에 나누어 커밋을 하든 똑같다. 하지만, 여러 번에 나누어 커밋하는 것이 다른 동료가 수정한 부분을 확인할 때나 각 커밋의 시점으로 복원해서 검토할 때에 이해하기 훨씬 쉽다. 6장에서는 이미 저장된 커밋을 다시 수정하거나 파일들을 단계적으로 Stage영역에 저장하는 방법을 살펴볼 것이다. 여러 가지 도구를 이용해서 간단하고 이해하기 쉬운 커밋을 쌓아가야 한다.</p>
+<p>그리고 각 커밋은 논리적으로 구분되는 Changeset이다. 최대한 수정사항을 하나의 주제로 요약할 수 있어야 하고 여러 가지 이슈에 대한 수정사항을 전부 하나의 커밋에 담지 않아야 한다. 여러 가지 이슈를 한꺼번에 수정했다고 하더라도 나중에 Stage 영역을 이용하여 한 커밋에 하나의 이슈만 담기도록 작업 내용을 분할하고, 각 커밋마다 적절한 메시지를 작성한다. 같은 파일의 다른 부분을 수정하는 경우에는 <code>git add -patch</code> 명령을 써서 한 부분씩 나누어 Stage 영역에 저장해야 한다(관련 내용은 6장에서 다룰 것이다). 결과적으로 최종 프로젝트의 모습은 한 번에 커밋을 하든 다섯 번에 나누어 커밋을 하든 똑같다. 하지만, 여러 번에 나누어 커밋하는 것이 다른 동료가 수정한 부분을 확인할 때나 각 커밋의 시점으로 복원해서 검토할 때에 이해하기 훨씬 쉽다. 6장에서는 이미 저장된 커밋을 다시 수정하거나 파일들을 단계적으로 Stage영역에 저장하는 방법을 살펴볼 것이다. 여러 가지 도구를 이용해서 간단하고 이해하기 쉬운 커밋을 쌓아가야 한다.</p>
 
 <p>마지막으로 명심해야 할 점은 커밋 메시지 자체다. 좋은 커밋 메시지를 작성하는 습관은 Git을 사용하는 데 도움이 많이 된다. 커밋 메시지 작성하는 보편적인 규칙이 있다. 메시지의 첫 줄에 50자가 넘지 않는 아주 간략한 메시지를 적어 해당 커밋을 요약한다. 다음 한 줄은 비우고 그다음 줄부터 커밋을 자세히 설명한다. 예를 들어 Git 개발 프로젝트에서는 개발 동기와 구현 상황의 제약조건이나 상황 등을 자세하게 요구한다. 이런 점은 따를 만한 좋은 가이드라인이다. 그리고 현재형 표현을 사용하는 것이 좋다. 예를 들어 "I added tests for (테스트를 추가함)" 보다는 "Add tests for (테스트 추가)" 와 같은 메시지를 작성한다. 아래 예제는 Pope_at_tpope.net이 작성한 커밋 메시지이다.</p>
 
@@ -3841,7 +3839,7 @@ Date:   Mon Oct 22 19:38:36 2008 -0700
 $ git diff 36c7db 
 </code></pre>
 
-<p>이 방법으로 원하는 결과를 얻을 수 있지만, 사용법이 불편하다. Git은 Triple-Dot으로 간단하게 위와 같이 비교하는 방법을 지원한다. diff 명령을 사용할 때 두 브랜치 사이에 ...를 한쪽 브랜치에만 있는 것을 살펴볼 수 있다:</p>
+<p>이 방법으로 원하는 결과를 얻을 수 있지만, 사용법이 불편하다. Git은 Triple-Dot으로 간단하게 위와 같이 비교하는 방법을 지원한다. diff 명령을 사용할 때 두 브랜치 사이에 ...를 쓰면, 두 브랜치의 공통 조상과 현재 브랜치의 마지막 커밋을 비교한다.:</p>
 
 <pre><code>$ git diff master...contrib
 </code></pre>
@@ -4204,7 +4202,7 @@ Date:   Fri Nov 7 13:47:59 2008 -0500
 
 <p><img src="figures/18333fig0601-tn.png" title="6-1. 범위를 설명하는 데 사용할 예제" alt="6-1. 범위를 설명하는 데 사용할 예제" /></p>
 
-<p>experiment 브랜치의 커밋들 중에서 아직 master 브랜치에 Merge하지 않은 것들만 보고 싶으면 <code>master..experiment</code>라고 사용한다. 이 표현은 "master에는 있지만, experiment에는 없는 커밋"을 의미한다. 여기에서는 설명을 쉽게 하려고 실제 조회 결과가 아니라 그림 6-1의 문자를 사용한다:</p>
+<p>experiment 브랜치의 커밋들 중에서 아직 master 브랜치에 Merge하지 않은 것들만 보고 싶으면 <code>master..experiment</code>라고 사용한다. 이 표현은 "master에는 없지만, experiment에는 있는 커밋"을 의미한다. 여기에서는 설명을 쉽게 하려고 실제 조회 결과가 아니라 그림 6-1의 문자를 사용한다:</p>
 
 <pre><code>$ git log master..experiment
 D
@@ -4746,7 +4744,7 @@ f3cc40e changed my name a bit
 
 <h4>모든 커밋에서 파일을 제거하기</h4>
 
-<p>갑자기 누군가 생각 없이 <code>git add.</code> 같은 명령어를 실행해 버려서 공룡 똥 덩어리가 커밋됐거나 실수로 암호가 포함된 파일을 커밋해서 이런 파일들을 다시 삭제해야 하는 상황을 살펴보자. 이런 상황은 생각보다 자주 발생한다. <code>filter-branch</code>는 히스토리 전체에서 필요한 것만 골라내는 데 사용하는 도구다. <code>filter-branch</code>의 <code>--tree-filter</code>라는 옵션을 사용하면 히스토리에서 passwords.txt라는 파일을 아예 제거할 수 있다:</p>
+<p>갑자기 누군가 생각 없이 <code>git add .</code> 같은 명령어를 실행해 버려서 공룡 똥 덩어리가 커밋됐거나 실수로 암호가 포함된 파일을 커밋해서 이런 파일들을 다시 삭제해야 하는 상황을 살펴보자. 이런 상황은 생각보다 자주 발생한다. <code>filter-branch</code>는 히스토리 전체에서 필요한 것만 골라내는 데 사용하는 도구다. <code>filter-branch</code>의 <code>--tree-filter</code>라는 옵션을 사용하면 히스토리에서 passwords.txt라는 파일을 아예 제거할 수 있다:</p>
 
 <pre><code>$ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 Rewrite 6b9b3cf04e7c5686a9cb838c3f36a8cb6a0fc2bd (21/21)
@@ -4875,7 +4873,7 @@ f24d3c6ebcfc639b1a3814550e62d60b8e68a8e4 M  config
 <pre><code>$ git bisect reset
 </code></pre>
 
-<p>수백 개의 커밋들 중에서 버그가 만들어진 커밋을 찾는 데 몇 분밖에 걸리지 않는다. 실제 업무에서 사용할 때에는 자동화 스크립트가 필요하다. 자동화 스크립트는 이슈를 못 찾으면 0을 반환하고(<code>exit 0</code>) 찾으면 0이 아닌 값을 반환하는 스크립트이다. 먼저 <code>bisect start</code>명령으로 bisect를 사용할 범위를 알려준다. 위에서 한 것처럼 문제가 있다고 아는 커밋과 문제가 없다고 아는 커밋을 넘기면 된다:</p>
+<p>수백 개의 커밋들 중에서 버그가 만들어진 커밋을 찾는 데 몇 분밖에 걸리지 않는다. 프로젝트가 정상적으로 수행되면 0을 반환하고 문제가 있을 경우 1을 반환하는 스크립트를 만든다면, 이 <code>git bisect</code> 과정을 완전히 자동으로 수행할 수 있다. 먼저 <code>bisect start</code>명령으로 bisect를 사용할 범위를 알려준다. 위에서 한 것처럼 문제가 있다고 아는 커밋과 문제가 없다고 아는 커밋을 넘기면 된다:</p>
 
 <pre><code>$ git bisect start HEAD v1.0
 $ git bisect run test-error.sh
@@ -4885,7 +4883,7 @@ $ git bisect run test-error.sh
 
 <h2>서브모듈</h2>
 
-<p>프로젝트를 수행하다 보면 다른 프로젝트를 사용해야 하는 경우가 종종 있다. 보통 사용할 프로젝트들은 독립적으로 개발된 라이브러리들이다. 다시 말해서 별도의 프로젝트로 관리하면서 하나의 프로젝트처럼 취급할 수 있어야 한다.</p>
+<p>프로젝트를 수행하다 보면 다른 프로젝트를 사용해야 하는 경우가 종종 있다. 보통 사용할 프로젝트들은 독립적으로 개발된 라이브러리들이다. 이런 상황에서 자주 생기는 이슈는, 두 프로젝트를 서로 별개로 다루면서도 그 중 하나를 다른 하나 안에서 사용할 수 있어야 한다는 것이다.</p>
 
 <p>Atom 피드를 제공하는 웹사이트를 만든다고 가장하자. Atom 피드를 생성하는 코드는 직접 작성하지 않고 라이브러리를 가져다 쓰기로 했다. 그러면 CPAN이나 Ruby gem 같은 라이브러리 관리 도구를 사용하거나 해당 소스코드를 프로젝트로 복사해야 한다. 사실 라이브러리를 조금 수정하는 것, 설치하기 모두 어렵지만, 사용자들은 모두 이용할 수 있어야 한다. 그래서 프로젝트에 코드를 포함하고 코드를 수정하면 원래 라이브러리 프로젝트의 코드와 Merge하기 어렵게 된다.</p>
 
@@ -5103,7 +5101,7 @@ $ git status
 #      rack/
 </code></pre>
 
-<p>서브모듈 디렉토리를 다른 곳에 옮겨두거나 삭제해야 한다. 그리고 나중에 서브모듈이 있는 브랜치로 돌아가서 복원한다. 만약 다시 Clone하면 아직 Push하지 않은 내용이나 브랜치를 잃게 되니 조심해야 한다.</p>
+<p>서브모듈 디렉토리를 다른 곳에 옮겨 두거나 삭제해야 한다. 삭제할 경우는 원래 브랜치로 돌아왔을 때 서브모듈을 다시 Clone해야 하고, 이 경우 아직 Push하지 않았던 변경사항이나 브랜치를 잃을 수 있다.</p>
 
 <p>rack이라는 디렉토리가 있고 이것을 서브모듈로 바꾸려고 한다고 가정하자. 먼저 rack 디렉토리를 삭제하고 <code>submodule add</code>를 실행하면 Git은 다음과 같은 에러를 뱉는다:</p>
 
@@ -6950,7 +6948,7 @@ objects/
 refs/
 </code></pre>
 
-<p>파일이 몇 개 있으니 완전히 빈 디렉토리는 아니지만 <code>git init</code>을 하고 난 직후는 저장소가 거의 비워져 있다. <code>branches</code> 디렉토리는 Git의 예전 버전에서만 사용하고 <code>description</code> 파일은 기본적으로 GitWeb 프로그램에서만 사용하기 때문에 이 둘은 무시해도 된다. <code>config</code> 파일에는 해당 프로젝트에만 적용되는 설정 옵션이 들어 있고, <code>info</code> 디렉토리는 .gitignore 파일처럼 무시할 파일의 패턴을 적어 두는 곳이다. 하지만 .gitignore 파일과는 달리 Git으로 관리되지 않는다. <code>hook</code> 디렉토리에는 클라이언트 훅이나 서버 훅을 넣는다. 관련 내용은 7장에서 다루었다.</p>
+<p>기본적으로 이것이 <code>git init</code>을 한 직후에 보이는 새 저장소의 모습이고, 이 외에 다른 파일들이 더 있을 수 있다. <code>branches</code> 디렉토리는 Git의 예전 버전에서만 사용하고 <code>description</code> 파일은 기본적으로 GitWeb 프로그램에서만 사용하기 때문에 이 둘은 무시해도 된다. <code>config</code> 파일에는 해당 프로젝트에만 적용되는 설정 옵션이 들어 있고, <code>info</code> 디렉토리는 .gitignore 파일처럼 무시할 파일의 패턴을 적어 두는 곳이다. 하지만 .gitignore 파일과는 달리 Git으로 관리되지 않는다. <code>hook</code> 디렉토리에는 클라이언트 훅이나 서버 훅을 넣는다. 관련 내용은 7장에서 다루었다.</p>
 
 <p>이제 남은 네 가지 항목은 모두 중요한 항목이다. <code>HEAD</code>와 <code>index</code> 파일, <code>objects</code>와 <code>refs</code> 디렉토리가 남았다. 이 네 항목이 Git의 핵심이다. <code>objects</code> 디렉토리는 모든 컨텐트를 저장하는 데이터베이스이고 <code>refs</code> 디렉토리에는 Commit 개체의 포인터를 저장한다. <code>HEAD</code> 파일은 현재 Checkout한 브랜치를 가리키고 <code>index</code> 파일은 Staging Area의 정보를 저장한다. 이 네 가지 항목을 자세히 살펴보면 Git이 어떻게 동작하는지 알게 된다.</p>
 
@@ -7268,7 +7266,7 @@ fdf4fc3344e67ab068f836878b6c4951e3b15f3d first commit
 <pre><code>$ git update-ref refs/heads/master 1a410efbd13591db07496601ebc7a059dd55cfe9
 </code></pre>
 
-<p>Git의 브랜치는 아주 단순한 포인터일 뿐인다. 기본적으로 하는 일을 가리키는 레퍼런스다. 간단히 두 번째 커밋을 가리키는 브랜치를 만들어 보자:</p>
+<p>Git의 브랜치의 역할이 바로 이것이다: 브랜치는 일련의 작업들의 헤드를 참조하는 포인터 또는 레퍼런스이다. 간단히 두 번째 커밋을 가리키는 브랜치를 만들어 보자:</p>
 
 <pre><code>$ git update-ref refs/heads/test cac0ca
 </code></pre>
